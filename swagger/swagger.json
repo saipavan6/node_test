@@ -1,0 +1,93 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "VMS API",
+      "version": "1.0.0",
+      "description": "Visitors management System API's"
+    },
+    "paths": {
+      "/api/email/send-email": {
+        "post": {
+          "tags": ["Email"],
+          "summary": "Send an email",
+          "description": "Sends an email with the specified details.",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "to": {
+                      "type": "string",
+                      "example": "saipavan861@gmail.com",
+                      "description": "Recipient email address"
+                    },
+                    "subject": {
+                      "type": "string",
+                      "example": "Test Email",
+                      "description": "Subject of the email"
+                    },
+                    "text": {
+                      "type": "string",
+                      "example": "Text",
+                      "description": "Plain text content of the email"
+                    },
+                    "html": {
+                      "type": "string",
+                      "example": "<h1>Hello Pavan</h1>",
+                      "description": "HTML content of the email"
+                    }
+                  },
+                  "required": ["to", "subject"]
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Email sent successfully",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "message": {
+                        "type": "string",
+                        "example": "Email sent successfully"
+                      },
+                      "info": {
+                        "type": "string",
+                        "example": "250 2.0.0 OK"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Error while sending email",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "message": {
+                        "type": "string",
+                        "example": "Error while sending email"
+                      },
+                      "error": {
+                        "type": "string",
+                        "example": "Authentication error"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
