@@ -5,7 +5,7 @@ const emailRoutes = require('./routes/emailRoutes');
 const swaggerDocument = require('./swagger/swagger.json');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 // Middleware
 app.use(bodyParser.json());
@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Routes
-app.use('/api/email', emailRoutes);
+app.use('/api/auth', emailRoutes);
 
 // Start Server
 app.listen(PORT, () => {
