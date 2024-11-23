@@ -88,7 +88,7 @@
           }
         }
       },
-      "/api/auth/signin": {
+      "/api/auth/Signin": {
         "get": {
           "tags": ["Authentication"],
           "summary": "User SignIn",
