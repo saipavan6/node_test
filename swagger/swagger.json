@@ -225,7 +225,7 @@
                         },
                         "VisitorType": {
                           "type": "string",
-                          "example": "Business",
+                          "example": "1",
                           "description": "Type of visitor"
                         },
                         "Status": {
