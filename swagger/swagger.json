@@ -3,7 +3,7 @@
     "info": {
       "title": "VMS API",
       "version": "1.0.0",
-      "description": "Visitors management System API's"
+      "description": "This Swagger documentation provides a detailed API reference for the Visitor Management System, enabling seamless integration of visitor entry and exit workflows. It covers endpoints for security, employees, HR, and superadmin roles, facilitating pre-booking, QR code generation, approvals, tracking, and reporting functionalities. Additionally, it includes features for automated email notifications, role-based access control, and comprehensive visitor tracking."
     },
     "paths": {
       "/api/auth/send-email": {

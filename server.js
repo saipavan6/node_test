@@ -4,12 +4,14 @@ const swaggerUi = require('swagger-ui-express');
 const emailRoutes = require('./routes/emailRoutes');
 const swaggerDocument = require('./swagger/swagger.json');
 
+const cors = require("cors");
+
 const app = express();
 const PORT = process.env.PORT || 4000;
 
 // Middleware
 app.use(bodyParser.json());
-
+app.use(cors());
 // Swagger Documentation
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
