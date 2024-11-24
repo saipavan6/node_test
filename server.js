@@ -30,7 +30,10 @@ app.use('/api/auth', emailRoutes);
 //});
 //192.168.253.161
 
-//const port = process.env.PORT || 3009;
-app.listen(port, '0.0.0.0', () => {
-    console.log(`Server is running on port ${port}`);
+
+
+
+app.listen(PORT, () => {
+    console.log(Server is running on http://localhost:${PORT});
+    console.log(Swagger docs available at http://localhost:${PORT}/api-docs);
 });
