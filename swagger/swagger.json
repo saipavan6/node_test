@@ -88,7 +88,7 @@
           }
         }
       },
-      "/api/auth/Signin": {
+      "/api/auth/signin": {
         "get": {
           "tags": ["Authentication"],
           "summary": "User SignIn",
@@ -225,7 +225,7 @@
                         },
                         "VisitorType": {
                           "type": "string",
-                          "example": "1",
+                          "example": 1,
                           "description": "Type of visitor"
                         },
                         "Status": {
@@ -437,11 +437,152 @@
             }
           }
         }
+      },
+      "/api/auth/PassApproval&Email": {
+        "post": {
+    "tags": ["PassApproval&Email"],
+    "summary": "Approve Pass and Send Email",
+    "description": "Updates the status of a pass request and optionally sends an email if the status is 'Approve'.",
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "RequestId": {
+                "type": "string",
+                "example": 1,
+                "description": "The unique ID of the request"
+              },
+              "Status": {
+                "type": "string",
+                "example": "Approve",
+                "description": "The status to update (e.g., 'Approve', 'Reject')"
+              },
+              "UserId": {
+                "type": "string",
+                "example": 1,
+                "description": "ID of the user updating the status"
+              },
+              "to": {
+                "type": "string",
+                "example": "",
+                "description": "Recipient email address (required if Status is 'Approve')"
+              },
+              "subject": {
+                "type": "string",
+                "example": "Your Pass Request Approved",
+                "description": "Email subject (required if Status is 'Approve')"
+              },
+              "text": {
+                "type": "string",
+                "example": "Your pass request has been approved.",
+                "description": "Plain text content of the email"
+              },
+              "html": {
+                "type": "string",
+                "example": "<h1>Congratulations!</h1><p>Your pass request has been approved.</p>",
+                "description": "HTML content of the email"
+              }
+            },
+            "required": ["RequestId", "Status", "UserId"]
+          }
+        }
       }
+    },
+    "responses": {
+      "200": {
+        "description": "Request processed successfully",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Status updated successfully"
+                },
+                "Status": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "emailResponse": {
+                  "type": "string",
+                  "example": "250 2.0.0 OK",
+                  "description": "Response from the email service (if email was sent)"
+                }
+              }
+            }
+          }
+        }
+      },
+      "400": {
+        "description": "Bad Request",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Missing required fields"
+                },
+                "Status": {
+                  "type": "boolean",
+                  "example": false
+                }
+              }
+            }
+          }
+        }
+      }
+      
     }
   }
   
+      },
+      "/api/auth/AttendeInActive": {
+        "get": {
+          "tags": ["Request Pass"],
+          "summary": "Make an Attendee Inactive",
+          "description": "Marks an attendee as inactive in the system based on their ID.",
+          "parameters": [
+            {
+              "name": "AttendeId",
+              "in": "query",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "example": 1
+              },
+              "description": "The ID of the attendee to make inactive."
+            },
+            {
+              "name": "UserId",
+              "in": "query",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "example": 1
+              },
+              "description": "The ID of the user performing the operation."
+            }
+          ]
 
+        }
+        
+
+      }
+  
+
+    }
+  }
+
+  
+
+
+      
  
   
   
